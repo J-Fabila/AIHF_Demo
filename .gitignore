@@ -4,3 +4,8 @@ src/__pycache__/*
 src/Models/__pycache__/*
 configs/.ipynb_checkpoints/*
 src/DATOS
+Segmentation_1/*
+Segmentation_1/src/*
+Segmentation_2/*
+Segmentation_2/src/*
+wandb/*
