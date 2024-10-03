@@ -2,3 +2,5 @@
 src/.ipynb_checkpoints/*
 src/__pycache__/*
 src/Models/__pycache__/*
+configs/.ipynb_checkpoints/*
+src/DATOS
