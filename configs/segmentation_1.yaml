@@ -7,7 +7,8 @@ use_certificates : False
 client_id : 1
 num_clients : 5
 set_server : False
-server_address : 161.116.4.119:4433
+server_address : 0.0.0.0:8080
+#161.116.4.119:4433
 
 # Model variables
 federated : True
@@ -21,11 +22,11 @@ UNet_bilinear : True
 UNet_custom_shape : None
 
 # Training variables
-batch_size : 2
-train_size : 0.8
-val_size : 0.1
-test_size : 0.1
-epochs : 10
+batch_size : 1
+train_size : 0.2
+val_size : 0.05
+test_size : 0.05
+epochs : 3
 num_rounds : 10
 verbatim : False
 
@@ -45,7 +46,7 @@ early_stopping_patience : 10
 
 # Data set variables
 dataset : LightningWrapperData
-dataset_root : /home/corn/workdir/Federado-main/flower_version/data/MMs/MMs_1_reshaped.pt
+dataset_root : /home/jorge/work_dir/AIHF_Demo/data/MMs_1_reshaped.pt
 target_label : mask
 n_channels : 1
 #data/CIFAR/cifar_1.pt
@@ -56,5 +57,5 @@ every_n_epochs : 1
 wandb_track : True
 wandb_project : AIHF_Demo
 wandb_run_name : Seg_1
-wandb_entity': 'jorgefabila1997'
+wandb_entity: 'jorgefabila1997'
 save_top_k : 10
