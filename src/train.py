@@ -48,5 +48,5 @@ def train(modelo, params, dataset):
         #print(" train  ::  terminaa")
         pass
     else:
-        print("=================== TESTING ")
+        #print("=================== TESTING ")
         trainer.test(dataloaders=dataset)

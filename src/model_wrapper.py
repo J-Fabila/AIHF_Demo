@@ -118,9 +118,9 @@ class ModelWrapper(pl.LightningModule):
                 if outputs_prob[:,clase,:,:].max() == 0:
                     outputs_prob[0,clase,0,0] = 1    
                 hausdorff += hd(outputs_prob[:,clase,:,:].cpu().numpy(),target_prob[:,clase,:,:].cpu().numpy())
-                print("HAUSDORFF ",clase, hausdorff)
+#                print("HAUSDORFF ",clase, hausdorff)
             hausdorff = hausdorff/self.params.n_classes
-            print("HAUSDORFF ", hausdorff)
+#            print("HAUSDORFF ", hausdorff)
             logs = {'val_loss': loss,"dice":dice_,"hausdorff":hausdorff}
             self.log_dict({"val_loss":loss,"dice":dice_,"hausdorff":hausdorff})
         return {"loss" : loss, 'log' : logs}
@@ -166,9 +166,9 @@ class ModelWrapper(pl.LightningModule):
                 if outputs_prob[:,clase,:,:].max() == 0:
                     outputs_prob[0,clase,0,0] = 1
                 hausdorff += hd(outputs_prob[:,clase,:,:].cpu().numpy(),target_prob[:,clase,:,:].cpu().numpy())
-                print("HAUSDORFF clase",clase, hausdorff)
+#                print("HAUSDORFF clase",clase, hausdorff)
             hausdorff = hausdorff/self.params.n_classes
-            print("HAUSDORFF ", hausdorff)
+#            print("HAUSDORFF ", hausdorff)
             logs = {'val_loss': loss,"dice":dice_,"hausdorff":hausdorff}
             self.log_dict({"val_loss":loss,"dice":dice_,"hausdorff":hausdorff})
         return {"loss" : loss, 'log' : logs}

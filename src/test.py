@@ -7,8 +7,8 @@ def test(modelo, dataset):
     Cosas por hacer:
     * Implementar el accuracy en el model: esta en STEP del modelwrapper
     """
-    print(" ************************************************ NEW TESTING ")
-    print(" PARAMS ", modelo.params.dataset) #, params.dataset)
+    #print(" ************************************************ NEW TESTING ")
+    #print(" PARAMS ", modelo.params.dataset) #, params.dataset)
     """
     if modelo.params.dataset == "MMs":
         test_dataset = MMsDataSet(modelo.params)  # Carga el conjunto de datos de prueba
@@ -21,10 +21,10 @@ def test(modelo, dataset):
         return
     test_dataset.setup("test")
     """
-    print(" DATA SET CARGADO")
+    #print(" DATA SET CARGADO")
     # Crea un DataLoader para el conjunto de datos de prueba
     #test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=modelo.params.batch_size, shuffle=False)
-    print(" test loader")
+    #print(" test loader")
     # Inicializa el evaluador de PyTorch Lightning
     #trainer = pl.Trainer()
     
@@ -38,15 +38,21 @@ def test(modelo, dataset):
     log_every_n_steps = 1
     )
 
-    print(" TRAINER DEFINIDO")
+    #print(" TRAINER DEFINIDO")
     # Evalúa el modelo en el conjunto de datos de prueba
     result = trainer.test(modelo,dataset)
-    print(" =========================================")
-    print(" RESULT ", type(result), result)
+    #print(" =========================================")
+    #print(" RESULT ", type(result), result)
 #   RESULT  <class 'list'> [{'test_loss': 1.5813443660736084}]
     # Imprime los resultados
     #print(result)
-    loss = result[0]["test_loss"]
-    accuracy = result[0]["acc"]
-    print("****************************************************TERMINA TESTING NUEVO")
+    # ********** * * * * * *  *  *  *  *  *   *   *   *   *  *  *  *  *  *  * * * * * *********************************
+    # Cuidado aquí, esto está hecho para clasificación solamente, tendrás que poner un if dependiendo de la tarea
+    # por ahora lo cambio a segmentación directamente, pero en producción tiene que estar  activado en automático
+    loss = result[0]["val_loss"]
+    #accuracy = result[0]["acc"]
+    accuracy = result[0]["dice"]
+
+    # ********** * * * * * *  *  *  *  *  *   *   *   *   *  *  *  *  *  *  * * * * * *********************************
+    #print("****************************************************TERMINA TESTING NUEVO")
     return loss, accuracy
